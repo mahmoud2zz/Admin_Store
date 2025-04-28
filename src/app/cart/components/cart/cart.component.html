@@ -1,0 +1,96 @@
+<div class="cartBox container my-4">
+
+  <form class="row g-3 align-items-end mb-4" [formGroup]="form">
+    <div class="col-md-4">
+      <label for="startDate" class="form-label">Start Date</label>
+      <input type="date" id="startDate" class="form-control" name="startDate" formControlName="startDate">
+    </div>
+    <div class="col-md-4">
+      <label for="endDate" class="form-label">End Date</label>
+      <input type="date" id="endDate" class="form-control" name="endDate" formControlName="endDate">
+    </div>
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-primary w-100" (click)="filterCarts()">
+        <i class="bi bi-funnel"></i> Filter
+      </button>
+    </div>
+  </form>
+  <table class="table table-bordered table-hover shadow-sm rounded">
+    <thead class="table-light">
+      <tr>
+        <th>Data</th>
+        <th>Quantity</th>
+        <th class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="cartItems">
+      @for(cart of carts; let index = $index; track trackById) {
+      <tr>
+        <td>{{ cart.date | date: 'dd-MM/yyyy'}}</td>
+        <td>{{cart.products.length}}</td>
+        <td class="text-center">
+          <div class="btn-group" role="group" aria-label="Cart actions">
+            <button class="btn btn-sm btn-danger" title="Delete item" (click)="deleteCart(cart.id)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+              (click)="DetailsProducts(index)">
+              View
+            </button>
+
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover shadow-sm rounded">
+          <thead class="table-light">
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th class="w-25">Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(product of products ; let index = $index; track trackById) {
+            <tr>
+              <td>
+                <img [src]="'data:image/jpeg;base64,' + product.image" alt="{{ product.title }}" width="50"
+                  height="50" />
+              </td>
+              <td>{{ product.title }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.quantity }}</td>
+              <td>{{ product.price * product.quantity }}</td>
+            </tr>
+            }
+          </tbody>
+
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

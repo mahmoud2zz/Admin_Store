@@ -1,0 +1,100 @@
+/* Cart Box Styling */
+.cartBox {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1.text-danger {
+  font-size: 24px;
+}
+
+.headCart {
+  margin-bottom: 20px;
+}
+
+.headCart .card-header {
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.cart-item-img {
+  width: 50px;
+  height: auto;
+}
+
+.quantity input {
+  width: 60px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.btn-sm {
+  font-size: 14px;
+}
+
+tfoot {
+  background-color: #f8f9fa;
+}
+
+tfoot th {
+  font-weight: bold;
+}
+
+/* Additional button and styling */
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+  .cart-item-img {
+    width: 40px;
+  }
+}
